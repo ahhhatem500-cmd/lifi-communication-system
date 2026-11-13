@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 460" width="1240" height="460" role="img" aria-label="Li-Fi system block diagram: keypad to Arduino UNO to laser, light beam, LDR to Arduino Nano to LCD">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#060D18"/>
+      <stop offset="1" stop-color="#0B1F33"/>
+    </linearGradient>
+    <linearGradient id="tx" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17324B"/>
+      <stop offset="1" stop-color="#11263A"/>
+    </linearGradient>
+    <linearGradient id="rx" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2A4A"/>
+      <stop offset="1" stop-color="#131F38"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F87171" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F87171" stop-opacity="0.12"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="arrowLight" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#F87171"/>
+    </marker>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#16304A" stroke-width="1"/>
+    </pattern>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1240" height="460" rx="18" fill="url(#bg)"/>
+  <rect width="1240" height="460" rx="18" fill="url(#grid)" opacity="0.4"/>
+
+  <!-- section labels -->
+  <text x="330" y="58" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3.2" fill="#38BDF8">TRANSMITTER</text>
+  <text x="912" y="58" text-anchor="middle" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3.2" fill="#818CF8">RECEIVER</text>
+  <line x1="40" y1="72" x2="620" y2="72" stroke="#1E4B6B" stroke-width="1"/>
+  <line x1="700" y1="72" x2="1200" y2="72" stroke="#2A2F5B" stroke-width="1"/>
+
+  <!-- blocks -->
+  <g>
+    <!-- Keypad -->
+    <rect x="40" y="150" width="160" height="120" rx="12" fill="url(#tx)" stroke="#2C5A7E" stroke-width="1.4"/>
+    <g fill="#0F2438" stroke="#3B7CA6" stroke-width="1">
+      <rect x="70" y="176" width="24" height="18" rx="3"/>
+      <rect x="101" y="176" width="24" height="18" rx="3"/>
+      <rect x="132" y="176" width="24" height="18" rx="3"/>
+      <rect x="70" y="201" width="24" height="18" rx="3"/>
+      <rect x="101" y="201" width="24" height="18" rx="3"/>
+      <rect x="132" y="201" width="24" height="18" rx="3"/>
+      <rect x="70" y="226" width="24" height="18" rx="3"/>
+      <rect x="101" y="226" width="24" height="18" rx="3"/>
+      <rect x="132" y="226" width="24" height="18" rx="3"/>
+    </g>
+    <text x="120" y="261" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600" fill="#7FAFD2">4x4 KEYPAD</text>
+
+    <!-- Arduino UNO -->
+    <rect x="250" y="150" width="170" height="120" rx="12" fill="url(#tx)" stroke="#2C5A7E" stroke-width="1.4"/>
+    <text x="335" y="196" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#A5DEFF">Arduino UNO</text>
+    <text x="335" y="218" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#6FA8D0">ASCII &#8594; binary</text>
+    <text x="335" y="236" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#6FA8D0">MSB first + start bit</text>
+
+    <!-- Laser -->
+    <rect x="470" y="150" width="150" height="120" rx="12" fill="url(#tx)" stroke="#2C5A7E" stroke-width="1.4"/>
+    <text x="545" y="196" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#A5DEFF">Laser diode</text>
+    <text x="545" y="218" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#6FA8D0">ON = 1 &#183; OFF = 0</text>
+    <text x="545" y="236" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#6FA8D0">pin D10</text>
+
+    <!-- LDR -->
+    <rect x="730" y="150" width="150" height="120" rx="12" fill="url(#rx)" stroke="#3B3F7E" stroke-width="1.4"/>
+    <text x="805" y="196" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="700" fill="#C7CBF7">LDR sensor</text>
+    <text x="805" y="218" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#8F95CC">voltage divider 10k</text>
+    <text x="805" y="236" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#8F95CC">analog A0</text>
+
+    <!-- Arduino Nano -->
+    <rect x="920" y="150" width="160" height="120" rx="12" fill="url(#rx)" stroke="#3B3F7E" stroke-width="1.4"/>
+    <text x="1000" y="196" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14.5" font-weight="700" fill="#C7CBF7">Arduino Nano</text>
+    <text x="1000" y="218" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#8F95CC">threshold &#62; 800</text>
+    <text x="1000" y="236" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#8F95CC">binary &#8594; ASCII</text>
+
+    <!-- LCD -->
+    <rect x="1120" y="150" width="80" height="120" rx="12" fill="url(#rx)" stroke="#3B3F7E" stroke-width="1.4"/>
+    <text x="1160" y="190" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#C7CBF7">LCD</text>
+    <text x="1160" y="207" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="#8F95CC">16x2</text>
+    <text x="1160" y="223" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="#8F95CC">I2C</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#38BDF8" stroke-width="1.8" fill="none">
+    <line x1="200" y1="210" x2="242" y2="210" marker-end="url(#arrow)"/>
+    <line x1="420" y1="210" x2="462" y2="210" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#818CF8" stroke-width="1.8" fill="none">
+    <line x1="880" y1="210" x2="912" y2="210" marker-end="url(#arrow)"/>
+    <line x1="1080" y1="210" x2="1112" y2="210" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- light beam -->
+  <g>
+    <path d="M620 210 L730 210" stroke="url(#beam)" stroke-width="5" stroke-linecap="round" filter="url(#soft)"/>
+    <path d="M620 196 L730 196" stroke="#F87171" stroke-width="1" stroke-opacity="0.35"/>
+    <path d="M620 224 L730 224" stroke="#F87171" stroke-width="1" stroke-opacity="0.35"/>
+    <circle cx="620" cy="210" r="4" fill="#FCA5A5"/>
+    <text x="675" y="180" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1.6" fill="#F87171">LIGHT</text>
+    <text x="675" y="252" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="#B0687A">free-space optical link</text>
+  </g>
+
+  <!-- bit frame -->
+  <g>
+    <text x="40" y="330" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2.4" fill="#4A7CA6">TRANSMITTED FRAME — ONE CHARACTER (8-bit ASCII)</text>
+    <g font-family="ui-monospace, Consolas, monospace" font-size="11">
+      <rect x="40" y="344" width="86" height="30" rx="5" fill="#12293F" stroke="#38BDF8" stroke-width="1.2"/>
+      <text x="83" y="363" text-anchor="middle" fill="#A5DEFF">START</text>
+      <rect x="132" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="162" y="363" text-anchor="middle" fill="#7FAFD2">D7</text>
+      <rect x="198" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="228" y="363" text-anchor="middle" fill="#7FAFD2">D6</text>
+      <rect x="264" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="294" y="363" text-anchor="middle" fill="#7FAFD2">D5</text>
+      <rect x="330" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="360" y="363" text-anchor="middle" fill="#7FAFD2">D4</text>
+      <rect x="396" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="426" y="363" text-anchor="middle" fill="#7FAFD2">D3</text>
+      <rect x="462" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="492" y="363" text-anchor="middle" fill="#7FAFD2">D2</text>
+      <rect x="528" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="558" y="363" text-anchor="middle" fill="#7FAFD2">D1</text>
+      <rect x="594" y="344" width="60" height="30" rx="5" fill="#0F2438" stroke="#2C5A7E"/>
+      <text x="624" y="363" text-anchor="middle" fill="#7FAFD2">D0</text>
+    </g>
+    <text x="40" y="400" font-family="ui-monospace, Consolas, monospace" font-size="10.5" fill="#4A7CA6">every bit occupies bitDuration &#183; the receiver samples the LDR in the middle of each slot</text>
+  </g>
+
+  <!-- footer chip -->
+  <g>
+    <rect x="940" y="378" width="260" height="44" rx="10" fill="#0E2237" stroke="#1E4B6B"/>
+    <text x="1070" y="396" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#A5DEFF">Two Arduinos, one beam</text>
+    <text x="1070" y="412" text-anchor="middle" font-family="ui-monospace, Consolas, monospace" font-size="10" fill="#6FA8D0">keypad &#8594; light &#8594; LCD</text>
+  </g>
+</svg>
